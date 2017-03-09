@@ -6,13 +6,20 @@ import { Provider } from 'react-redux';
 import routes from './routes';
 import { Router, browserHistory } from 'react-router';
 import configureStore from './store/configureStore';
+import {syncHistoryWithStore} from 'react-router-redux';
+import {loadLocations} from './actions/locationActions';
+import {loadTags} from './actions/tagActions';
+
 require('./favicon.ico');
 import './styles/styles.scss';
-import {syncHistoryWithStore} from 'react-router-redux';
+
 
 const store = configureStore();
 
 const history = syncHistoryWithStore(browserHistory, store);
+
+store.dispatch(loadLocations());
+store.dispatch(loadTags());
 
 render(
     <Provider store={store}>

@@ -1,28 +1,19 @@
-import React, { PropTypes } from 'react';
-import { Link, IndexLink } from 'react-router';
+import React, {PropTypes} from 'react';
+import Header from './common/Header';
 
 class App extends React.Component {
     render() {
-        return(
+        return (
             <div className="page">
-                <header className="header">
-                    <nav className="nav">
-                        <IndexLink to="/">Home</IndexLink>
-                        <Link to="/about">About</Link>
-                    </nav>
-                </header>
-
-                <main>
-                    {this.props.children}
-                </main>
-
+                <header />
+                {this.props.children}
             </div>
         );
     }
 }
 
 App.propTypes = {
-    children: PropTypes.element
+    children: PropTypes.object.isRequired
 };
 
 export default App;
